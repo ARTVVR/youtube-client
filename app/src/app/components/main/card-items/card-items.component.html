@@ -1,0 +1,24 @@
+<div class="card-items-container" *ngFor="let card of db; let i = index">
+  <div class="card-poster">
+    <img [src]="db[i].snippet.thumbnails.maxres.url" />
+  </div>
+  <ul class="list-counts">
+    <li
+      *ngFor="
+        let item of db[i].statistics | keyvalue: onCompare;
+        let index = index
+      ">
+      <span class="counts-content" *ngIf="item.key !== 'favoriteCount'">
+        <mat-icon class="info-icon">{{ arrIcons[index] }}</mat-icon>
+        <span class="info-count">{{ item.value }}</span>
+      </span>
+    </li>
+  </ul>
+  <div class="block-title">
+    <h4 class="title-video">{{ db[i].snippet.title }}</h4>
+  </div>
+
+  <div class="block-btn">
+    <button class="btn-more" mat-raised-button>more...</button>
+  </div>
+</div>

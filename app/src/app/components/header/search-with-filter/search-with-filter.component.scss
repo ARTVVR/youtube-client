@@ -1,0 +1,75 @@
+$light-blue-color: #2f80ed;
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .search-input {
+    margin-left: 10px;
+    width: 400px;
+    height: 100%;
+  }
+
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 16px;
+  }
+
+  .search-btn {
+    width: 80px;
+    height: 24px;
+    background-color: $light-blue-color;
+    color: #FFFFFF;
+    line-height: 0;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 1px -1px 3px $light-blue-color;
+  }
+
+  .settings-btn {
+    color: #FFFFFF;
+    background-color: $light-blue-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-bottom: 4px;
+    box-shadow: 1px -1px 3px $light-blue-color;
+  }
+}
+
+.sort-container {
+  margin-top: 5px;
+  position: absolute;
+  width: 0px;
+  font-size: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .list-for-sort {
+    display: flex;
+    align-items: center;
+
+    .keys-of-list {
+      margin-left: 20px;
+      color: $light-blue-color;
+      cursor: pointer;
+      text-decoration: underline;
+      width: max-content;
+
+      &:nth-child(1) {
+        margin-left: 0;
+        color: #929292;
+        text-decoration: none;
+      }
+
+      .sort-input {
+        width: 235px;
+      }
+    }
+
+  }
+}

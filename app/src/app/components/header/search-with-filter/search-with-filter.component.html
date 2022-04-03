@@ -1,0 +1,24 @@
+<div class="input-container">
+  <form>
+    <img src="../../../../assets/svg-icons/logo.svg" alt="Logo" />
+    <mat-form-field class="search-input">
+      <mat-label>What are you want to find out?</mat-label>
+      <input matInput type="search" />
+    </mat-form-field>
+    <button mat-button class="search-btn">search</button>
+  </form>
+  <button class="settings-btn" (click)="isVisible = !isVisible">
+    <mat-icon>tune</mat-icon>
+  </button>
+</div>
+
+<div [@divTrigger]="'end'" class="sort-container" *ngIf="isVisible">
+  <ul class="list-for-sort">
+    <li class="keys-of-list" *ngFor="let item of sortOfWords">
+      {{ item }}
+    </li>
+    <li class="keys-of-list">
+      <input class="sort-input" type="text" />
+    </li>
+  </ul>
+</div>
