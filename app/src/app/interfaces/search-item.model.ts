@@ -1,3 +1,17 @@
+export interface IItem {
+  kind: string;
+  etag: string;
+  id: string;
+  snippet: ISnippet;
+  statistics: IStatistics;
+}
+
+export interface RootObject {
+  kind: string;
+  etag: string;
+  pageInfo: IPageInfo;
+  items: IItem[];
+}
 export interface IPageInfo {
   totalResults: number;
   resultsPerPage: number;
@@ -23,7 +37,7 @@ export interface ILocalized {
 }
 
 export interface ISnippet {
-  publishedAt: Date;
+  publishedAt: string;
   channelId: string;
   title: string;
   description: string;
@@ -34,7 +48,7 @@ export interface ISnippet {
   liveBroadcastContent: string;
   localized: ILocalized;
   defaultAudioLanguage: string;
-  defaultLanguage: string;
+  defaultLanguage?: string;
 }
 
 export interface IStatistics {

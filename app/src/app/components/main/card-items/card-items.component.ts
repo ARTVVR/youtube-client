@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { KeyValue } from '@angular/common';
-import data from '../../../response/response';
+import FilterService from '../../../services/filter.service';
+import { IItem, IStatistics } from '../../../interfaces/search-item.model';
+import { KEY_WORD_FAVORITE_COUNT } from '../../../constants/constants';
 
 @Component({
   selector: 'app-card-items',
   templateUrl: './card-items.component.html',
   styleUrls: ['./card-items.component.scss'],
 })
-export default class CardItemsComponent implements OnInit {
+export default class CardItemsComponent {
+  db: IItem = this.filterService.data;
+
   infoCount: string[] = [];
 
   arrIcons: string[] = [
@@ -17,34 +21,19 @@ export default class CardItemsComponent implements OnInit {
     'question_answer',
   ];
 
-  db = data[0].items;
+  keysStatistics: IStatistics[] = [];
 
-  ngOnInit(): void {
-    this.reductionIn();
+  constructor(private filterService: FilterService) {}
+
+  onCompare(a: KeyValue<string, string>, b: KeyValue<string, string>): number {
+    return a.key && b.key === KEY_WORD_FAVORITE_COUNT ? -1 : 1;
   }
 
-  static onCompare(
-    a: KeyValue<string, string>,
-    b: KeyValue<string, string>
-  ): number {
-    if (a.key && b.key === 'favoriteCount') return -1;
-
-    return 1;
+  get data(): string {
+    return this.filterService.dynamicFilter;
   }
 
-  // TODO: Сократить большие числа
-  reductionIn() {
-    for (let i = 0; i < this.db.length; i += 1) {
-      const arrN = Object.values(this.db[i].statistics);
-      const newArr = arrN.map(v => {
-        if (v.length >= 4) {
-          const res = v.slice(0, v.length - 3);
-          console.log(`${res}k`);
-          return res;
-        }
-        return v;
-      });
-      console.log(newArr);
-    }
+  get filterDate() {
+    return this.filterService.criterionKey;
   }
 }

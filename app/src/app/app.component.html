@@ -8,5 +8,7 @@
 </header>
 
 <main class="main">
-  <app-card-items></app-card-items>
+  <div class="video-container">
+    <app-card-items *ngIf="getVisibility()"></app-card-items>
+  </div>
 </main>

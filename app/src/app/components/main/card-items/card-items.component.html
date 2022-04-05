@@ -1,11 +1,18 @@
-<div class="card-items-container" *ngFor="let card of db; let i = index">
+<div
+  class="card-items-container"
+  *ngFor="
+    let card of db | filterByKeyword: data | filterByCriteria: filterDate;
+    let i = index
+  ">
   <div class="card-poster">
-    <img [src]="db[i].snippet.thumbnails.maxres.url" />
+    <img [src]="card.snippet.thumbnails.maxres.url" />
   </div>
   <ul class="list-counts">
     <li
       *ngFor="
-        let item of db[i].statistics | keyvalue: onCompare;
+        let item of card.statistics
+          | keyvalue: onCompare
+          | filterDataStatisticsPipe;
         let index = index
       ">
       <span class="counts-content" *ngIf="item.key !== 'favoriteCount'">
@@ -15,7 +22,7 @@
     </li>
   </ul>
   <div class="block-title">
-    <h4 class="title-video">{{ db[i].snippet.title }}</h4>
+    <h4 class="title-video">{{ card.snippet.title }}</h4>
   </div>
 
   <div class="block-btn">
