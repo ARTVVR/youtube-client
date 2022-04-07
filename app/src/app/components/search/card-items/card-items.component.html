@@ -1,0 +1,39 @@
+<div class="card-block">
+  <div class="card-poster">
+    <img src="{{ card ? card.snippet.thumbnails.maxres.url : '' }}" />
+  </div>
+
+  <ul class="list-counts">
+    <li class="counts-content">
+      <mat-icon class="info-icon">visibility</mat-icon>
+      <span class="info-count">{{
+        card ? getRoundedValues(card.statistics.viewCount) : ''
+      }}</span>
+    </li>
+    <li class="counts-content">
+      <mat-icon class="info-icon">thumb_up</mat-icon>
+      <span class="info-count">{{
+        card ? getRoundedValues(card.statistics.likeCount) : ''
+      }}</span>
+    </li>
+    <li class="counts-content">
+      <mat-icon class="info-icon">thumb_down</mat-icon>
+      <span class="info-count">{{
+        card ? getRoundedValues(card.statistics.dislikeCount) : ''
+      }}</span>
+    </li>
+    <li class="counts-content">
+      <mat-icon class="info-icon">question_answer</mat-icon>
+      <span class="info-count">{{
+        card ? getRoundedValues(card.statistics.commentCount) : ''
+      }}</span>
+    </li>
+  </ul>
+  <h4 class="card-title">
+    {{ card ? card.snippet.title : '' }}
+  </h4>
+
+  <div class="block-btn">
+    <button class="btn-more" mat-raised-button>more...</button>
+  </div>
+</div>

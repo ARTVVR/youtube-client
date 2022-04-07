@@ -1,32 +1,39 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { RootObject } from 'src/app/interfaces/search-item.model';
+import { IItem } from 'src/app/interfaces/search-item.model';
+import reverseValue from 'src/app/utils/utils';
 import {
-  KEY_WORD_COUNT_OF_VIEWS,
-  KEY_WORD_DATE,
+  VIEW_FILTER_VALUE,
+  DATE_FILTER_VALUE,
 } from '../../constants/constants';
 
 @Pipe({
   name: 'filterByCriteria',
 })
 export default class FilterByCriteria implements PipeTransform {
-  dataBase: RootObject[] = [];
+  private videoData: IItem[] = [];
 
-  transform(value: any, args: string): any {
-    this.dataBase = value;
-    return value.sort((a: any, b: any) => {
-      switch (args) {
-        case KEY_WORD_DATE:
+  public transform(videoData: IItem[], keyWord: string): IItem[] {
+    this.videoData = videoData;
+    videoData.sort((a: IItem, b: IItem): number => {
+      switch (keyWord) {
+        case DATE_FILTER_VALUE:
           return new Date(a.snippet.publishedAt) >
             new Date(b.snippet.publishedAt)
             ? 1
             : -1;
-        case KEY_WORD_COUNT_OF_VIEWS:
-          return (
-            Number(b.statistics.viewCount) - Number(a.statistics.viewCount)
-          );
+        case VIEW_FILTER_VALUE:
+          return +b.statistics.viewCount - +a.statistics.viewCount;
+        case reverseValue(DATE_FILTER_VALUE):
+          return new Date(a.snippet.publishedAt) >
+            new Date(b.snippet.publishedAt)
+            ? -1
+            : -1;
+        case reverseValue(VIEW_FILTER_VALUE):
+          return +a.statistics.viewCount - +b.statistics.viewCount;
         default:
-          return value;
+          return 1;
       }
     });
+    return this.videoData;
   }
 }

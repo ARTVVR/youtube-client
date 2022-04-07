@@ -39,7 +39,7 @@ $light-blue-color: #2f80ed;
   }
 }
 
-.sort-container {
+.filters-container {
   margin-top: 5px;
   position: absolute;
   width: 0px;
@@ -49,11 +49,11 @@ $light-blue-color: #2f80ed;
   align-items: center;
   justify-content: space-between;
 
-  .list-for-sort {
+  .filter-list {
     display: flex;
     align-items: center;
 
-    .keys-of-list {
+    .filters {
       margin-left: 20px;
       color: $light-blue-color;
       cursor: pointer;
@@ -76,6 +76,5 @@ $light-blue-color: #2f80ed;
         width: 235px;
       }
     }
-
   }
 }

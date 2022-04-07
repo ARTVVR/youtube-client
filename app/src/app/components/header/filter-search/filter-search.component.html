@@ -5,7 +5,7 @@
       <mat-label>What are you want to find out?</mat-label>
       <input matInput type="search" />
     </mat-form-field>
-    <button mat-button class="search-btn" (click)="changeVisibility()">
+    <button mat-button class="search-btn" (click)="changeToVisible()">
       search
     </button>
   </form>
@@ -14,17 +14,18 @@
   </button>
 </div>
 
-<div [@divTrigger]="'end'" class="sort-container" *ngIf="isVisible">
-  <ul class="list-for-sort">
-    <li class="keys-of-list">Sorting by:</li>
+<div [@divTrigger]="'end'" class="filters-container" *ngIf="isVisible">
+  <ul class="filter-list">
+    <li class="filters">Sorting by:</li>
     <li
-      class="keys-of-list"
+      class="filters"
       *ngFor="let item of sortOfWords"
-      (click)="sortByDate(item)">
+      (click)="sortByCriteria(item)"
+    >
       {{ item }}
     </li>
-    <li class="keys-of-list">by word or sentance</li>
-    <li class="keys-of-list">
+    <li class="filters">by word or sentance</li>
+    <li class="filters">
       <input class="sort-input" type="text" [(ngModel)]="filterByValue" />
     </li>
   </ul>

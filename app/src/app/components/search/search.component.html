@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="video-container" *ngIf="dataService.isVisible">
+    <div
+      class="card-items-container color-frame"
+      #colorFrame
+      *ngFor="
+        let card of videoData
+          | changeColor: postingPeriod
+          | filterByKeyword: dataService.inputValue
+          | filterByCriteria: dataService.filterValue;
+        let i = index"
+    >
+      <app-card-items [card]="card"></app-card-items>
+    </div>
+  </div>
+</div>
