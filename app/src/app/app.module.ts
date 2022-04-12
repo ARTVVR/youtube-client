@@ -8,12 +8,17 @@ import AppComponent from './app.component';
 import FilterSearchComponent from './components/header/filter-search/filter-search.component';
 import UserComponent from './components/header/user/user.component';
 import MaterialModule from './material/material.module';
-import CardItemsComponent from './components/search/card-items/card-items.component';
+import CardItemsComponent from './card-items.component';
 import FilterByKeywordPipe from './pipes/filter-by-keyword/filter-by-keyword.pipe';
 import FilterByCriteria from './pipes/filter-by-criteria/filter-by-criteria.pipe';
 import ChangeColorPipe from './pipes/change-color/change-color.pipe';
 import SearchComponent from './components/search/search.component';
 import HeaderComponent from './components/header/header.component';
+import AppRoutingModule from './app-routing.module';
+import DetailsPageComponent from './components/main/search/details-page/details-page.component';
+import MainComponent from './components/main/main.component';
+import PageNotFoundComponent from './components/main/page-not-found/page-not-found.component';
+import AuthComponent from './components/main/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +31,10 @@ import HeaderComponent from './components/header/header.component';
     ChangeColorPipe,
     SearchComponent,
     HeaderComponent,
+    DetailsPageComponent,
+    MainComponent,
+    PageNotFoundComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,8 +42,9 @@ import HeaderComponent from './components/header/header.component';
     MaterialModule,
     FormsModule,
     CommonModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [ChangeColorPipe],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -1,0 +1,31 @@
+<div class="form-authorisation">
+  <mat-grid-list cols="1" rowHeight="250">
+    <div class="title">Login</div>
+    <mat-grid-tile>
+      <div class="forms-block">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Login</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Enter password</mat-label>
+          <input matInput class="input" [type]="isHide ? 'password' : 'text'" />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="isHide = !isHide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="isHide">
+            <mat-icon>{{ isHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <br />
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="btns-block">
+    <button class="registration-btn" mat-stroked-button>Registration</button>
+    <button class="login-btn" mat-raised-button>Login</button>
+  </div>
+</div>

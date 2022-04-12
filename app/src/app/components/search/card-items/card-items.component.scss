@@ -1,63 +1,80 @@
 :host {
   height: 100%;
 
-  .card-block {
+  .color-frame {
+    border-bottom: 8px solid;
+  }
+
+  .card-items-container {
+    margin: 20px;
+    padding: 20px;
+    width: 310px;
+    height: 360px;
+    background-color: #E5E5E5;
+    box-shadow: 1px 0px 5px #7a7a7a;
+    border-radius: 5px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     flex-direction: column;
-    height: 100%;
+    justify-content: space-between;
 
-    .card-poster {
-      width: 100%;
-      height: 160px;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    .list-counts {
-      width: 100%;
+    .card-block {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-direction: column;
+      height: 100%;
 
-      .counts-content {
+      .card-poster {
+        width: 100%;
+        height: 160px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .list-counts {
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        .info-icon {
-          width: 16px;
-          height: 16px;
-          font-size: 16px;
-        }
+        .counts-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
 
-        .info-count {
-          margin-top: 4px;
-          margin-left: 0.5em;
-          font-size: 12px;
+          .info-icon {
+            width: 16px;
+            height: 16px;
+            font-size: 16px;
+          }
+
+          .info-count {
+            margin-top: 4px;
+            margin-left: 0.5em;
+            font-size: 12px;
+          }
         }
       }
-    }
 
-    .card-title {
-      width: 100%;
-      text-align: right;
-      font-weight: bold;
-      font-size: 16px;
-    }
+      .card-title {
+        width: 100%;
+        text-align: right;
+        font-weight: bold;
+        font-size: 16px;
+      }
 
-    .block-btn {
-      width: 100%;
-      text-align: center;
+      .block-btn {
+        width: 100%;
+        text-align: center;
 
-      .btn-more {
-        width: 150px;
-        background-color: #2F80ED;
-        color: #FFFFFF;
+        .btn-more {
+          width: 150px;
+          background-color: #2F80ED;
+          color: #FFFFFF;
+        }
       }
     }
   }

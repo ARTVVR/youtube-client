@@ -2,46 +2,74 @@ import {
   AfterViewChecked,
   Component,
   ElementRef,
-  Input,
+  OnInit,
   ViewChild,
 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
-  MAX_THOUSAND_MILLION,
-  MAX_THOUSAND_LENGTH,
   LENGTH_VALUES_FOR_SLICE,
+  MAX_THOUSAND_LENGTH,
+  MAX_THOUSAND_MILLION,
 } from 'src/app/constants/constants';
-<<<<<<< HEAD:app/src/app/components/search/card-items/card-items.component.ts
-import { IItem } from '../../../interfaces/search-item.model';
-=======
+import { IItem } from 'src/app/interfaces/search-item.model';
 import ChangeColorPipe from 'src/app/pipes/change-color/change-color.pipe';
 import FilterService from 'src/app/services/filter.service';
-import { IItem } from '../../../../interfaces/search-item.model';
->>>>>>> 94c7146 (feat: add routing and details with auth pages):app/src/app/components/main/search/card-items/card-items.component.ts
 
 @Component({
-  selector: 'app-card-items',
-  templateUrl: './card-items.component.html',
-  styleUrls: ['./card-items.component.scss'],
+  selector: 'app-details-page',
+  templateUrl: './details-page.component.html',
+  styleUrls: ['./details-page.component.scss'],
 })
-export default class CardItemsComponent implements AfterViewChecked {
-  @Input() card!: IItem;
-
+export default class DetailsPageComponent implements OnInit, AfterViewChecked {
   @ViewChild('colorFrame')
-  postingPeriod: ElementRef | undefined;
+  private postingPeriod: ElementRef | undefined;
+
+  public card: IItem | undefined;
 
   private roundedValues: string = '';
 
+  private dataBase: IItem[] = [];
+
   constructor(
+    private route: ActivatedRoute,
     private filterService: FilterService,
-    private changeColorPipe: ChangeColorPipe
+    private changeColorPipe: ChangeColorPipe,
+    private router: Router
   ) {}
 
+  ngOnInit(): void {
+    this.getCardId();
+  }
+
   ngAfterViewChecked(): void {
+    this.setColor();
+  }
+
+  private setColor(): void {
     if (this.postingPeriod && this.card) {
       this.changeColorPipe.transform(this.card, this.postingPeriod);
       this.postingPeriod.nativeElement.style.borderColor =
         this.filterService.colorValue;
     }
+  }
+
+  private async getCardId(): Promise<void> {
+    await this.getDataBase();
+
+    const routeParams = this.route.snapshot.paramMap;
+    const cardId = routeParams.get('id');
+
+    this.card = this.dataBase.find(
+      (value: IItem): boolean => value.id === cardId
+    );
+
+    if (!this.card) {
+      this.router.navigate(['/404']);
+    }
+  }
+
+  private async getDataBase(): Promise<void> {
+    this.dataBase = await FilterService.getData();
   }
 
   public getRoundedValues(value: string): string {
