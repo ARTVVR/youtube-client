@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import LoginInformationBlockComponent from './login-information-block.component';
 
@@ -9,6 +10,7 @@ describe('LoginInformationBlockComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginInformationBlockComponent],
+      imports: [RouterTestingModule],
     }).compileComponents();
     fixture = TestBed.createComponent(LoginInformationBlockComponent);
     component = fixture.componentInstance;

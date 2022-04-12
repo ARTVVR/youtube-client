@@ -21,4 +21,12 @@ $light-blue-color: #2f80ed;
     line-height: 0;
     padding: 0;
   }
+
+  .mat-flat-button {
+    background-color: transparent;
+    line-height: 0;
+    padding: 0;
+    min-width: 34px;
+    color: $light-blue-color;
+  }
 }

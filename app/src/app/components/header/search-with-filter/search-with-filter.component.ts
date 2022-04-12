@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import FilterService from 'src/app/services/filter.service';
 import divTrigger from 'src/app/app.animations';
 import reverseValue from 'src/app/utils/utils';
+import AuthService from 'src/app/shared/auth/auth.service';
 
 @Component({
   selector: 'app-search-with-filter',
@@ -13,11 +14,14 @@ import reverseValue from 'src/app/utils/utils';
   animations: [divTrigger],
 })
 export default class SearchWithFilterComponent {
-  sortOfWords: string[] = ['date', 'count of views'];
+  public sortOfWords: string[] = ['date', 'count of views'];
 
-  isVisible: boolean = false;
+  public isVisible: boolean = false;
 
-  constructor(private filterService: FilterService) {}
+  constructor(
+    private filterService: FilterService,
+    private auth: AuthService
+  ) {}
 
   public set filterByValue(value: string) {
     this.filterService.inputValue = value;
@@ -34,6 +38,6 @@ export default class SearchWithFilterComponent {
   }
 
   public changeVisibility(): void {
-    this.filterService.isVisible = true;
+    if (this.auth.isExistToken) this.filterService.isVisible = true;
   }
 }

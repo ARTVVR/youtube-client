@@ -15,10 +15,10 @@ import ChangeColorPipe from './pipes/change-color/change-color.pipe';
 import SearchComponent from './components/search/search.component';
 import HeaderComponent from './components/header/header.component';
 import AppRoutingModule from './app-routing.module';
-import DetailsPageComponent from './components/main/search/details-page/details-page.component';
-import MainComponent from './components/main/main.component';
-import PageNotFoundComponent from './components/main/page-not-found/page-not-found.component';
-import AuthComponent from './components/main/auth/auth.component';
+import DetailsPageComponent from './components/search/details-page/details-page.component';
+import MainComponent from './components/main.component';
+import PageNotFoundComponent from './components/page-not-found/page-not-found.component';
+import AuthComponent from './components/auth/auth.component';
 
 @NgModule({
   declarations: [

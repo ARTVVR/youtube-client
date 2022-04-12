@@ -26,6 +26,12 @@
   </mat-grid-list>
   <div class="btns-block">
     <button class="registration-btn" mat-stroked-button>Registration</button>
-    <button class="login-btn" mat-raised-button>Login</button>
+    <button
+      class="login-btn"
+      mat-raised-button
+      (click)="setToken()"
+      routerLink="/">
+      Login
+    </button>
   </div>
 </div>
