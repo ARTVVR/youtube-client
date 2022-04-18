@@ -27,7 +27,7 @@ export default class FilterByCriteria implements PipeTransform {
           return new Date(a.snippet.publishedAt) >
             new Date(b.snippet.publishedAt)
             ? -1
-            : -1;
+            : 1;
         case reverseValue(VIEW_FILTER_VALUE):
           return +a.statistics.viewCount - +b.statistics.viewCount;
         default:

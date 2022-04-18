@@ -5,18 +5,10 @@ import {
   Input,
   ViewChild,
 } from '@angular/core';
-import {
-  MAX_THOUSAND_MILLION,
-  MAX_THOUSAND_LENGTH,
-  LENGTH_VALUES_FOR_SLICE,
-} from 'src/app/constants/constants';
-<<<<<<< HEAD:app/src/app/components/search/card-items/card-items.component.ts
-import { IItem } from '../../../interfaces/search-item.model';
-=======
 import ChangeColorPipe from 'src/app/pipes/change-color/change-color.pipe';
-import FilterService from 'src/app/services/filter.service';
-import { IItem } from '../../../../interfaces/search-item.model';
->>>>>>> 94c7146 (feat: add routing and details with auth pages):app/src/app/components/main/search/card-items/card-items.component.ts
+import DataService from 'src/app/services/data.service';
+import { setRoundValues } from 'src/app/utils/utils';
+import { IItem } from '../../../interfaces/search-item.model';
 
 @Component({
   selector: 'app-card-items',
@@ -32,7 +24,7 @@ export default class CardItemsComponent implements AfterViewChecked {
   private roundedValues: string = '';
 
   constructor(
-    private filterService: FilterService,
+    private dataService: DataService,
     private changeColorPipe: ChangeColorPipe
   ) {}
 
@@ -40,27 +32,12 @@ export default class CardItemsComponent implements AfterViewChecked {
     if (this.postingPeriod && this.card) {
       this.changeColorPipe.transform(this.card, this.postingPeriod);
       this.postingPeriod.nativeElement.style.borderColor =
-        this.filterService.colorValue;
+        this.dataService.colorValue;
     }
   }
 
   public getRoundedValues(value: string): string {
-    this.roundedValues = value;
-    if (
-      value.length >= MAX_THOUSAND_LENGTH &&
-      value.length < MAX_THOUSAND_MILLION
-    ) {
-      this.roundedValues = `${value.slice(
-        0,
-        value.length - LENGTH_VALUES_FOR_SLICE
-      )}k`;
-    }
-    if (value.length >= MAX_THOUSAND_MILLION) {
-      this.roundedValues = `${value.slice(
-        0,
-        value.length - LENGTH_VALUES_FOR_SLICE * 2
-      )}m`;
-    }
+    this.roundedValues = setRoundValues(value);
     return this.roundedValues;
   }
 }

@@ -1,4 +1,4 @@
-<div class="form-authorisation">
+<div class="form-authorization">
   <mat-grid-list cols="1" rowHeight="250">
     <div class="title">Login</div>
     <mat-grid-tile>
@@ -10,17 +10,23 @@
 
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Enter password</mat-label>
-          <input matInput class="input" [type]="isHide ? 'password' : 'text'" />
+          <input
+            matInput
+            class="input"
+            [type]="isVisible ? 'password' : 'text'"
+          />
           <button
             mat-icon-button
             matSuffix
-            (click)="isHide = !isHide"
+            (click)="isVisible = !isVisible"
             [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="isHide">
-            <mat-icon>{{ isHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            [attr.aria-pressed]="isVisible"
+          >
+            <mat-icon>
+              {{ isVisible ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
           </button>
         </mat-form-field>
-        <br />
       </div>
     </mat-grid-tile>
   </mat-grid-list>
@@ -29,8 +35,9 @@
     <button
       class="login-btn"
       mat-raised-button
-      (click)="setToken()"
-      routerLink="/">
+      (click)="auth.logIn()"
+      routerLink="/"
+    >
       Login
     </button>
   </div>

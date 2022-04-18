@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import SearchComponent from './components/main/search/search.component';
-import DetailsPageComponent from './components/main/search/details-page/details-page.component';
-import PageNotFoundComponent from './components/main/page-not-found/page-not-found.component';
-import AuthComponent from './components/main/auth/auth.component';
-import AuthGuard from './shared/auth/auth.guard';
+import SearchComponent from './components/search/search.component';
+import DetailsPageComponent from './components/search/details-page/details-page.component';
+import PageNotFoundComponent from './components/page-not-found/page-not-found.component';
+import AuthComponent from './components/auth/auth.component';
+import AuthGuard from './components/auth/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: SearchComponent, canActivate: [AuthGuard] },
@@ -13,7 +13,7 @@ const routes: Routes = [
     component: DetailsPageComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'authorisation', component: AuthComponent },
+  { path: 'authorization', component: AuthComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

@@ -9,6 +9,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 const MaterialComponents = [
   MatIconModule,
@@ -17,11 +21,14 @@ const MaterialComponents = [
   MatButtonToggleModule,
   MatProgressSpinnerModule,
   MatFormFieldModule,
-  MatFormFieldModule,
   MatNativeDateModule,
   MatSelectModule,
   MatRadioModule,
   MatGridListModule,
+  BrowserModule,
+  BrowserAnimationsModule,
+  FormsModule,
+  CommonModule,
 ];
 
 @NgModule({

@@ -1,29 +1,12 @@
-<<<<<<< HEAD:app/src/app/components/search/search.component.html
-<div class="main">
-  <div class="video-container" *ngIf="dataService.isVisible">
-    <div
-      class="card-items-container color-frame"
-      #colorFrame
-      *ngFor="
-        let card of videoData
-          | changeColor: postingPeriod
-          | filterByKeyword: dataService.inputValue
-          | filterByCriteria: dataService.filterValue;
-        let i = index"
-    >
-      <app-card-items [card]="card"></app-card-items>
-    </div>
-=======
-<div class="video-container" *ngIf="getVisibility">
+<div class="video-container" *ngIf="dataService.isVisible">
   <div
-    class="card-items-container"
+    class="card-items-container color-frame"
+    #colorFrame
     *ngFor="
-      let card of dataBase
-        | filterByKeyword: filterInputValue
-        | filterByCriteria: filterDate;
-      let i = index
-    ">
+      let card of videoData
+        | filterByKeyword: dataService.inputValue
+        | filterByCriteria: dataService.filterValue"
+  >
     <app-card-items [card]="card"></app-card-items>
->>>>>>> 94c7146 (feat: add routing and details with auth pages):app/src/app/components/main/search/search.component.html
   </div>
 </div>

@@ -3,8 +3,10 @@ $light-blue-color: #2f80ed;
 :host {
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin-top: 80px + 50px;
 
-  .form-authorisation {
+  .form-authorization {
     margin-top: 100px;
     width: 550px;
     background-color: #e5e5e5;

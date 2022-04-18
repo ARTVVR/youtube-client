@@ -4,117 +4,118 @@
   align-items: center;
   justify-content: center;
   margin-top: 200px;
-}
+  width: 100%;
 
-.details-container {
-  max-width: 1262px;
-  height: 450px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-  .return-btn {
-    position: relative;
-    background-color: #2F80ED;
-    height: 32px;
-    width: 32px;
-    border-radius: 10px 0 0 10px;
-    cursor: pointer;
-
-    .return-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-25%, -50%);
-      color: #FFFFFF;
-    }
-  }
-
-  .poster-block {
-    width: 700px;
-    height: 100%;
-
-    .poster-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 0 0 0 5px;
-    }
-  }
-
-  .color-frame {
-    border-bottom: 8px solid;
-  }
-
-  .details-blocks {
-    width: 500px;
-    padding: 20px 35px;
+  .details-container {
+    max-width: 1262px;
+    height: 450px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    background-color: #E5E5E5;
-    box-shadow: 1px 0px 5px #7a7a7a;
-    border-radius: 0 5px 5px 0;
+    flex-wrap: wrap;
 
-    .titles-block {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .return-btn {
+      position: relative;
+      background-color: #2F80ED;
+      height: 32px;
+      width: 32px;
+      border-radius: 10px 0 0 10px;
+      cursor: pointer;
 
-      .title {
-        font-size: 24px;
-        max-width: 70%;
-        font-weight: bold;
-      }
-
-      .published-date {
-        font-size: 10px;
-        color: #828282;
+      .return-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-25%, -50%);
+        color: #FFFFFF;
       }
     }
 
-    .description-block {
+    .poster-block {
+      width: 700px;
       height: 100%;
-      margin-top: 20px;
 
-      .description-title {
-        font-size: 14px;
-        font-weight: bold;
-      }
-
-      .description-content {
-        margin-top: 10px;
-        font-size: 12px;
-        color: #828282;
+      .poster-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0 0 0 5px;
       }
     }
 
-    .statistics-block {
-      width: 200px;
-      margin: 0 auto;
+    .color-frame {
+      border-bottom: 8px solid;
+    }
 
-      .list-counts {
+    .details-blocks {
+      width: 500px;
+      padding: 20px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #E5E5E5;
+      box-shadow: 1px 0px 5px #7a7a7a;
+      border-radius: 0 5px 5px 0;
+
+      .titles-block {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        .counts-content {
+        .title {
+          font-size: 24px;
+          max-width: 70%;
+          font-weight: bold;
+        }
+
+        .published-date {
+          font-size: 10px;
+          color: #828282;
+        }
+      }
+
+      .description-block {
+        height: 100%;
+        margin-top: 20px;
+
+        .description-title {
+          font-size: 14px;
+          font-weight: bold;
+        }
+
+        .description-content {
+          margin-top: 10px;
+          font-size: 12px;
+          color: #828282;
+        }
+      }
+
+      .statistics-block {
+        width: 200px;
+        margin: 0 auto;
+
+        .list-counts {
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: space-between;
 
-          .info-icon {
-            width: 16px;
-            height: 16px;
-            font-size: 16px;
-          }
+          .counts-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-          .info-count {
-            margin-top: 4px;
-            margin-left: 0.5em;
-            font-size: 12px;
+            .info-icon {
+              width: 16px;
+              height: 16px;
+              font-size: 16px;
+            }
+
+            .info-count {
+              margin-top: 4px;
+              margin-left: 0.5em;
+              font-size: 12px;
+            }
           }
         }
       }
@@ -124,7 +125,6 @@
 
 @media (max-width: 1271px) {
   .details-container {
-
     .return-btn {
       display: block;
     }

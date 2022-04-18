@@ -7,27 +7,27 @@
     <ul class="list-counts">
       <li class="counts-content">
         <mat-icon class="info-icon">visibility</mat-icon>
-        <span class="info-count">{{
-          getRoundedValues(card.statistics.viewCount)
-        }}</span>
+        <span class="info-count">
+          {{ getRoundedValues(card.statistics.viewCount) }}
+        </span>
       </li>
       <li class="counts-content">
         <mat-icon class="info-icon">thumb_up</mat-icon>
-        <span class="info-count">{{
-          getRoundedValues(card.statistics.likeCount)
-        }}</span>
+        <span class="info-count">
+          {{ getRoundedValues(card.statistics.likeCount) }}
+        </span>
       </li>
       <li class="counts-content">
         <mat-icon class="info-icon">thumb_down</mat-icon>
-        <span class="info-count">{{
-          getRoundedValues(card.statistics.dislikeCount)
-        }}</span>
+        <span class="info-count">
+          {{ getRoundedValues(card.statistics.dislikeCount) }}
+        </span>
       </li>
       <li class="counts-content">
         <mat-icon class="info-icon">question_answer</mat-icon>
-        <span class="info-count">{{
-          getRoundedValues(card.statistics.commentCount)
-        }}</span>
+        <span class="info-count">
+          {{ getRoundedValues(card.statistics.commentCount) }}
+        </span>
       </li>
     </ul>
     <h4 class="card-title">
@@ -38,7 +38,8 @@
       <button
         [routerLink]="['details', card.id]"
         class="btn-more"
-        mat-raised-button>
+        mat-raised-button
+      >
         more...
       </button>
     </div>

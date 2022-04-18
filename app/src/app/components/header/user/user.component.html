@@ -1,6 +1,9 @@
-<div class="user-container">
-  <p class="user-name">Your name</p>
-  <button mat-button>
+<div class="authorization-container">
+  <p class="authorization-name">Your name</p>
+  <button mat-button routerLink="authorization">
     <mat-icon>account_circle</mat-icon>
+  </button>
+  <button mat-flat-button (click)="auth.logOut()" *ngIf="auth.isLoggedIn()">
+    <mat-icon>logout</mat-icon>
   </button>
 </div>

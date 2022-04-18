@@ -6,14 +6,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  LENGTH_VALUES_FOR_SLICE,
-  MAX_THOUSAND_LENGTH,
-  MAX_THOUSAND_MILLION,
-} from 'src/app/constants/constants';
 import { IItem } from 'src/app/interfaces/search-item.model';
 import ChangeColorPipe from 'src/app/pipes/change-color/change-color.pipe';
-import FilterService from 'src/app/services/filter.service';
+import DataService from 'src/app/services/data.service';
+import { setRoundValues } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-details-page',
@@ -26,13 +22,13 @@ export default class DetailsPageComponent implements OnInit, AfterViewChecked {
 
   public card: IItem | undefined;
 
-  private roundedValues: string = '';
+  private videoData: IItem[] = [];
 
-  private dataBase: IItem[] = [];
+  private roundedValues: string = '';
 
   constructor(
     private route: ActivatedRoute,
-    private filterService: FilterService,
+    private dataService: DataService,
     private changeColorPipe: ChangeColorPipe,
     private router: Router
   ) {}
@@ -49,18 +45,18 @@ export default class DetailsPageComponent implements OnInit, AfterViewChecked {
     if (this.postingPeriod && this.card) {
       this.changeColorPipe.transform(this.card, this.postingPeriod);
       this.postingPeriod.nativeElement.style.borderColor =
-        this.filterService.colorValue;
+        this.dataService.colorValue;
     }
   }
 
   private async getCardId(): Promise<void> {
-    await this.getDataBase();
-
     const routeParams = this.route.snapshot.paramMap;
     const cardId = routeParams.get('id');
 
-    this.card = this.dataBase.find(
-      (value: IItem): boolean => value.id === cardId
+    await this.getVideoData();
+
+    this.card = this.videoData.find(
+      (item: IItem): boolean => item.id === cardId
     );
 
     if (!this.card) {
@@ -68,27 +64,12 @@ export default class DetailsPageComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  private async getDataBase(): Promise<void> {
-    this.dataBase = await FilterService.getData();
+  private async getVideoData(): Promise<void> {
+    this.videoData = await DataService.getVideoData();
   }
 
   public getRoundedValues(value: string): string {
-    this.roundedValues = value;
-    if (
-      value.length >= MAX_THOUSAND_LENGTH &&
-      value.length < MAX_THOUSAND_MILLION
-    ) {
-      this.roundedValues = `${value.slice(
-        0,
-        value.length - LENGTH_VALUES_FOR_SLICE
-      )}k`;
-    }
-    if (value.length >= MAX_THOUSAND_MILLION) {
-      this.roundedValues = `${value.slice(
-        0,
-        value.length - LENGTH_VALUES_FOR_SLICE * 2
-      )}m`;
-    }
+    this.roundedValues = setRoundValues(value);
     return this.roundedValues;
   }
 }
