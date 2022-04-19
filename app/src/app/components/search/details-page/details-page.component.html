@@ -1,0 +1,55 @@
+<div class="details-container" *ngIf="card">
+  <div class="return-btn" routerLink="/">
+    <mat-icon class="return-icon">arrow_back_ios</mat-icon>
+  </div>
+
+  <div class="poster-block">
+    <img
+      class="poster-img"
+      src="{{ card.snippet.thumbnails.maxres.url }}"
+      alt="Poster"
+    />
+  </div>
+
+  <div #colorFrame class="details-blocks color-frame">
+    <div class="titles-block">
+      <h3 class="title">{{ card.snippet.title }}</h3>
+      <span class="published-date">
+        {{ card.snippet.publishedAt | date: 'fullDate' }}
+      </span>
+    </div>
+    <div class="description-block">
+      <span class="description-title">Description:</span>
+      <p class="description-content">{{ card.snippet.description }}</p>
+    </div>
+
+    <div class="statistics-block">
+      <ul class="list-counts">
+        <li class="counts-content">
+          <mat-icon class="info-icon">visibility</mat-icon>
+          <span class="info-count">
+            {{ getRoundedValues(card.statistics.viewCount) }}
+          </span>
+        </li>
+        <li class="counts-content">
+          <mat-icon class="info-icon">thumb_up</mat-icon>
+          <span class="info-count">
+            {{ getRoundedValues(card.statistics.likeCount) }}
+          </span>
+        </li>
+        <li class="counts-content">
+          <mat-icon class="info-icon">thumb_down</mat-icon>
+          <span class="info-count">
+            {{ getRoundedValues(card.statistics.dislikeCount) }}
+          </span>
+        </li>
+        <li class="counts-content">
+          <mat-icon class="info-icon">question_answer</mat-icon>
+          <span class="info-count">
+            {{ getRoundedValues(card.statistics.commentCount) }}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,39 +1,47 @@
-<div class="card-block">
-  <div class="card-poster">
-    <img src="{{ card ? card.snippet.thumbnails.maxres.url : '' }}" />
-  </div>
+<div class="card-items-container color-frame" #colorFrame>
+  <div class="card-block" *ngIf="card">
+    <div class="card-poster">
+      <img src="{{ card.snippet.thumbnails.maxres.url }}" />
+    </div>
 
-  <ul class="list-counts">
-    <li class="counts-content">
-      <mat-icon class="info-icon">visibility</mat-icon>
-      <span class="info-count">{{
-        card ? getRoundedValues(card.statistics.viewCount) : ''
-      }}</span>
-    </li>
-    <li class="counts-content">
-      <mat-icon class="info-icon">thumb_up</mat-icon>
-      <span class="info-count">{{
-        card ? getRoundedValues(card.statistics.likeCount) : ''
-      }}</span>
-    </li>
-    <li class="counts-content">
-      <mat-icon class="info-icon">thumb_down</mat-icon>
-      <span class="info-count">{{
-        card ? getRoundedValues(card.statistics.dislikeCount) : ''
-      }}</span>
-    </li>
-    <li class="counts-content">
-      <mat-icon class="info-icon">question_answer</mat-icon>
-      <span class="info-count">{{
-        card ? getRoundedValues(card.statistics.commentCount) : ''
-      }}</span>
-    </li>
-  </ul>
-  <h4 class="card-title">
-    {{ card ? card.snippet.title : '' }}
-  </h4>
+    <ul class="list-counts">
+      <li class="counts-content">
+        <mat-icon class="info-icon">visibility</mat-icon>
+        <span class="info-count">
+          {{ getRoundedValues(card.statistics.viewCount) }}
+        </span>
+      </li>
+      <li class="counts-content">
+        <mat-icon class="info-icon">thumb_up</mat-icon>
+        <span class="info-count">
+          {{ getRoundedValues(card.statistics.likeCount) }}
+        </span>
+      </li>
+      <li class="counts-content">
+        <mat-icon class="info-icon">thumb_down</mat-icon>
+        <span class="info-count">
+          {{ getRoundedValues(card.statistics.dislikeCount) }}
+        </span>
+      </li>
+      <li class="counts-content">
+        <mat-icon class="info-icon">question_answer</mat-icon>
+        <span class="info-count">
+          {{ getRoundedValues(card.statistics.commentCount) }}
+        </span>
+      </li>
+    </ul>
+    <h4 class="card-title">
+      {{ card.snippet.title }}
+    </h4>
 
-  <div class="block-btn">
-    <button class="btn-more" mat-raised-button>more...</button>
+    <div class="block-btn">
+      <button
+        [routerLink]="['details', card.id]"
+        class="btn-more"
+        mat-raised-button
+      >
+        more...
+      </button>
+    </div>
   </div>
 </div>

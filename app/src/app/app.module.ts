@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -14,6 +14,10 @@ import FilterByCriteria from './pipes/filter-by-criteria/filter-by-criteria.pipe
 import ChangeColorPipe from './pipes/change-color/change-color.pipe';
 import SearchComponent from './components/search/search.component';
 import HeaderComponent from './components/header/header.component';
+import AppRoutingModule from './app-routing.module';
+import DetailsPageComponent from './components/search/details-page/details-page.component';
+import PageNotFoundComponent from './components/page-not-found/page-not-found.component';
+import AuthComponent from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import HeaderComponent from './components/header/header.component';
     ChangeColorPipe,
     SearchComponent,
     HeaderComponent,
+    DetailsPageComponent,
+    PageNotFoundComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,9 +40,9 @@ import HeaderComponent from './components/header/header.component';
     MaterialModule,
     FormsModule,
     CommonModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [ChangeColorPipe],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export default class AppModule {}

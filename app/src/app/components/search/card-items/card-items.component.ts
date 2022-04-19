@@ -1,9 +1,13 @@
-import { Component, Input } from '@angular/core';
 import {
-  MAX_THOUSAND_MILLION,
-  MAX_THOUSAND_LENGTH,
-  LENGTH_VALUES_FOR_SLICE,
-} from 'src/app/constants/constants';
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+} from '@angular/core';
+import ChangeColorPipe from 'src/app/pipes/change-color/change-color.pipe';
+import DataService from 'src/app/services/data.service';
+import { setRoundValues } from 'src/app/utils/utils';
 import { IItem } from '../../../interfaces/search-item.model';
 
 @Component({
@@ -11,28 +15,29 @@ import { IItem } from '../../../interfaces/search-item.model';
   templateUrl: './card-items.component.html',
   styleUrls: ['./card-items.component.scss'],
 })
-export default class CardItemsComponent {
+export default class CardItemsComponent implements AfterViewChecked {
   @Input() card!: IItem;
+
+  @ViewChild('colorFrame')
+  postingPeriod: ElementRef | undefined;
 
   private roundedValues: string = '';
 
+  constructor(
+    private dataService: DataService,
+    private changeColorPipe: ChangeColorPipe
+  ) {}
+
+  ngAfterViewChecked(): void {
+    if (this.postingPeriod && this.card) {
+      this.changeColorPipe.transform(this.card, this.postingPeriod);
+      this.postingPeriod.nativeElement.style.borderColor =
+        this.dataService.colorValue;
+    }
+  }
+
   public getRoundedValues(value: string): string {
-    this.roundedValues = value;
-    if (
-      value.length >= MAX_THOUSAND_LENGTH &&
-      value.length < MAX_THOUSAND_MILLION
-    ) {
-      this.roundedValues = `${value.slice(
-        0,
-        value.length - LENGTH_VALUES_FOR_SLICE
-      )}k`;
-    }
-    if (value.length >= MAX_THOUSAND_MILLION) {
-      this.roundedValues = `${value.slice(
-        0,
-        value.length - LENGTH_VALUES_FOR_SLICE * 2
-      )}m`;
-    }
+    this.roundedValues = setRoundValues(value);
     return this.roundedValues;
   }
 }
