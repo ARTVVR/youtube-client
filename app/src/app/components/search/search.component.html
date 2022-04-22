@@ -1,9 +1,9 @@
-<div class="video-container" *ngIf="dataService.isVisible">
+<div class="video-container" *ngIf="dataService.videoData as cards">
   <div
     class="card-items-container color-frame"
     #colorFrame
     *ngFor="
-      let card of videoData
+      let card of cards
         | filterByKeyword: dataService.inputValue
         | filterByCriteria: dataService.filterValue"
   >

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import AppComponent from './app.component';
 import FilterSearchComponent from './components/header/filter-search/filter-search.component';
 import UserComponent from './components/header/user/user.component';
@@ -18,6 +19,8 @@ import AppRoutingModule from './app-routing.module';
 import DetailsPageComponent from './components/search/details-page/details-page.component';
 import PageNotFoundComponent from './components/page-not-found/page-not-found.component';
 import AuthComponent from './components/auth/auth.component';
+import DataService from './services/data.service';
+import ResponseInterceptor from './interceptors/response.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,8 +44,18 @@ import AuthComponent from './components/auth/auth.component';
     FormsModule,
     CommonModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [ChangeColorPipe],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptor,
+      multi: true,
+    },
+    HttpClientModule,
+    ChangeColorPipe,
+    DataService,
+  ],
   bootstrap: [AppComponent],
 })
 export default class AppModule {}

@@ -6,7 +6,7 @@ import {
   DAYS_IN_MONTH,
   DAYS_IN_WEEK,
   DAYS_IN_HALF_YEAR,
-  BLACK_COLOR,
+  YELLOW_COLOR,
   BLUE_COLOR,
   GREEN_COLOR,
   RED_COLOR,
@@ -33,7 +33,7 @@ export default class ChangeColorPipe implements PipeTransform {
         this.dataService.colorValue = RED_COLOR;
         break;
       default:
-        this.dataService.colorValue = BLACK_COLOR;
+        this.dataService.colorValue = YELLOW_COLOR;
         break;
     }
   }

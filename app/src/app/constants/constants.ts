@@ -7,13 +7,20 @@ export const DAYS_IN_MONTH = 30;
 export const DAYS_IN_WEEK = 7;
 export const DAYS_IN_HALF_YEAR = 183;
 
+export const MAX_VIDEOS = 12;
+
+export const MINIMAL_SEARCH_LENGTH = 3;
+
 export const GREEN_COLOR = '#008000';
 export const BLUE_COLOR = '#00BFFF';
 export const RED_COLOR = '#B22222';
-export const BLACK_COLOR = '#000000';
+export const YELLOW_COLOR = '#FFD700';
 
 export const VIEW_FILTER_VALUE = 'count of views';
 export const DATE_FILTER_VALUE = 'date';
 
-export const URL =
-  'https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/angular/response.json';
+export const YOUTUBE_SEARCH_URL =
+  'https://www.googleapis.com/youtube/v3/search';
+export const YOUTUBE_VIDEO_URL = 'https://www.googleapis.com/youtube/v3/videos';
+
+export const API_KEY = 'AIzaSyDvAazJfYqWB4Wboi0LVmJUbV-F7U-V6Xo';

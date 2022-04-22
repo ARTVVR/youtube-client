@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import {
   AfterViewChecked,
   Component,
@@ -5,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IItem } from 'src/app/interfaces/search-item.model';
 import ChangeColorPipe from 'src/app/pipes/change-color/change-color.pipe';
 import DataService from 'src/app/services/data.service';
@@ -22,15 +23,13 @@ export default class DetailsPageComponent implements OnInit, AfterViewChecked {
 
   public card: IItem | undefined;
 
-  private videoData: IItem[] = [];
-
   private roundedValues: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
     private changeColorPipe: ChangeColorPipe,
-    private router: Router
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -53,19 +52,13 @@ export default class DetailsPageComponent implements OnInit, AfterViewChecked {
     const routeParams = this.route.snapshot.paramMap;
     const cardId = routeParams.get('id');
 
-    await this.getVideoData();
-
-    this.card = this.videoData.find(
-      (item: IItem): boolean => item.id === cardId
-    );
-
-    if (!this.card) {
-      this.router.navigate(['/404']);
+    if (this.dataService.videoData) {
+      this.card = this.dataService.videoData.find((item: IItem): boolean => {
+        return `${item.id}` === cardId;
+      });
+    } else {
+      this.location.back();
     }
-  }
-
-  private async getVideoData(): Promise<void> {
-    this.videoData = await DataService.getVideoData();
   }
 
   public getRoundedValues(value: string): string {

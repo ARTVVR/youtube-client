@@ -1,11 +1,15 @@
 export interface IItem {
   kind: string;
   etag: string;
-  id: string;
+  id: IItemId;
   snippet: ISnippet;
   statistics: IStatistics;
 }
 
+export interface IItemId {
+  kind: string;
+  videoId: string;
+}
 export interface RootObject {
   kind: string;
   etag: string;
@@ -54,7 +58,6 @@ export interface ISnippet {
 export interface IStatistics {
   viewCount: string;
   likeCount: string;
-  dislikeCount: string;
   favoriteCount: string;
   commentCount: string;
 }
