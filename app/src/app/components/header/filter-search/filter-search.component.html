@@ -3,11 +3,14 @@
     <img src="../../../../assets/svg-icons/logo.svg" alt="Logo" />
     <mat-form-field class="search-input">
       <mat-label>What are you want to find out?</mat-label>
-      <input matInput type="search" />
+      <input
+        matInput
+        type="search"
+        (input)="getSearchedVideos()"
+        [(ngModel)]="searchValue"
+        name="search"
+      />
     </mat-form-field>
-    <button mat-button class="search-btn" (click)="changeToVisible()">
-      search
-    </button>
   </form>
   <button class="settings-btn" (click)="isVisible = !isVisible">
     <mat-icon>tune</mat-icon>

@@ -6,7 +6,7 @@
   <div class="poster-block">
     <img
       class="poster-img"
-      src="{{ card.snippet.thumbnails.maxres.url }}"
+      src="{{ card.snippet.thumbnails.high.url }}"
       alt="Poster"
     />
   </div>
@@ -35,12 +35,6 @@
           <mat-icon class="info-icon">thumb_up</mat-icon>
           <span class="info-count">
             {{ getRoundedValues(card.statistics.likeCount) }}
-          </span>
-        </li>
-        <li class="counts-content">
-          <mat-icon class="info-icon">thumb_down</mat-icon>
-          <span class="info-count">
-            {{ getRoundedValues(card.statistics.dislikeCount) }}
           </span>
         </li>
         <li class="counts-content">

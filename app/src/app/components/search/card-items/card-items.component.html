@@ -1,31 +1,25 @@
 <div class="card-items-container color-frame" #colorFrame>
   <div class="card-block" *ngIf="card">
     <div class="card-poster">
-      <img src="{{ card.snippet.thumbnails.maxres.url }}" />
+      <img src="{{ card.snippet.thumbnails.high.url }}" />
     </div>
 
     <ul class="list-counts">
       <li class="counts-content">
         <mat-icon class="info-icon">visibility</mat-icon>
-        <span class="info-count">
+        <span class="info-count" *ngIf="card.statistics">
           {{ getRoundedValues(card.statistics.viewCount) }}
         </span>
       </li>
       <li class="counts-content">
         <mat-icon class="info-icon">thumb_up</mat-icon>
-        <span class="info-count">
+        <span class="info-count" *ngIf="card.statistics">
           {{ getRoundedValues(card.statistics.likeCount) }}
         </span>
       </li>
       <li class="counts-content">
-        <mat-icon class="info-icon">thumb_down</mat-icon>
-        <span class="info-count">
-          {{ getRoundedValues(card.statistics.dislikeCount) }}
-        </span>
-      </li>
-      <li class="counts-content">
         <mat-icon class="info-icon">question_answer</mat-icon>
-        <span class="info-count">
+        <span class="info-count" *ngIf="card.statistics">
           {{ getRoundedValues(card.statistics.commentCount) }}
         </span>
       </li>
