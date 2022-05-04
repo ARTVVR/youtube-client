@@ -1,9 +1,16 @@
 <div class="authorization-container">
-  <p class="authorization-name">Your name</p>
-  <button mat-button routerLink="authorization">
-    <mat-icon>account_circle</mat-icon>
+  <button mat-mini-fab *ngIf="auth.isLoggedIn()">
+    <mat-icon class="admin-icon" rooterLink="/admin">
+      admin_panel_settings
+    </mat-icon>
   </button>
-  <button mat-flat-button (click)="auth.logOut()" *ngIf="auth.isLoggedIn()">
-    <mat-icon>logout</mat-icon>
-  </button>
+  <div class="user-block">
+    <p class="authorization-name">{{ auth.userName }}</p>
+    <button mat-button routerLink="authorization">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-flat-button (click)="auth.logOut()" *ngIf="auth.isLoggedIn()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
 </div>

@@ -4,37 +4,53 @@
   width: 100%;
   margin-top: 80px + 50px;
 
-  .form-authorization {
-    margin-top: 100px;
+  .form-registration {
     width: 550px;
+    margin-top: 100px;
     background-color: #e5e5e5;
-    padding: 45px 80px;
+    padding: 0 80px;
     border-radius: 10px;
 
     .title {
+      margin-bottom: 70px;
       text-align: center;
       font-size: 26px;
       font-weight: bold;
-      margin-bottom: 10px;
     }
 
-    .form-field {
+    .name-form-field {
+      width: 49%;
+      margin-bottom: 15px;
+
+      &:nth-child(3) {
+        margin-left: 2%
+      }
+    }
+
+
+    .data-form-field {
       width: 100%;
-      margin: 10px 0;
+      margin-bottom: 15px;
+    }
+
+    .width-25 {
+      width: 25%;
     }
 
     .btns-block {
       width: 100%;
       display: flex;
       justify-content: space-between;
+      margin-top: 40px;
+
 
       .registration-btn {
-        color: #0288d1;
+        width: 200px;
+        color: #FFFFFF;
       }
 
       .login-btn {
-        width: 200px;
-        color: #FFFFFF;
+        color: #0288d1;
       }
     }
   }

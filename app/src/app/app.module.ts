@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CommonModule } from '@angular/common';
@@ -21,6 +21,7 @@ import PageNotFoundComponent from './components/page-not-found/page-not-found.co
 import AuthComponent from './components/auth/auth.component';
 import DataService from './services/data.service';
 import ResponseInterceptor from './interceptors/response.interceptor';
+import RegistrationComponent from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import ResponseInterceptor from './interceptors/response.interceptor';
     DetailsPageComponent,
     PageNotFoundComponent,
     AuthComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import ResponseInterceptor from './interceptors/response.interceptor';
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
