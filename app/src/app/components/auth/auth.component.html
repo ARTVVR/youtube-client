@@ -13,9 +13,9 @@
           <input matInput formControlName="email" />
           <mat-error class="error">
             {{
-              formGroup.controls['email'].value.length === 0
-                ? 'Please enter your email address'
-                : 'Please enter a valid email address'
+              formGroup.controls['email'].value
+                ? 'Please enter a valid email address'
+                : 'Please enter your email address'
             }}
           </mat-error>
           <mat-hint *ngIf="formGroup.controls['email'].valid">
@@ -37,7 +37,7 @@
 
           <mat-error
             class="error"
-            *ngIf="formGroup.controls['password'].value.length === 0"
+            *ngIf="!formGroup.controls['password'].value"
           >
             Please enter your password
           </mat-error>

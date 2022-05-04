@@ -13,6 +13,9 @@ export const MINIMAL_SEARCH_LENGTH = 3;
 
 export const MINIMAL_PASSWORD_LENGTH = 8;
 export const MINIMAL_NAME_LENGTH = 3;
+export const MINIMAL_TITLE_LENGTH = 3;
+export const MAX_TITLE_LENGTH = 20;
+export const MAX_DESCRIPTION_LENGTH = 255;
 
 export const GREEN_COLOR = '#008000';
 export const BLUE_COLOR = '#00BFFF';

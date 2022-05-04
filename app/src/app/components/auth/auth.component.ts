@@ -16,11 +16,6 @@ export default class AuthComponent {
   constructor(public auth: AuthService) {}
 
   public onSubmit(): void {
-    console.log(
-      this.formGroup.controls['email'].valid,
-      this.formGroup.controls['password'].valid
-    );
-
     if (
       this.formGroup.controls['email'].valid &&
       this.formGroup.controls['password'].valid

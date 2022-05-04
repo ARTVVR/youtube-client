@@ -6,6 +6,7 @@ import PageNotFoundComponent from './components/page-not-found/page-not-found.co
 import AuthComponent from './components/auth/auth.component';
 import AuthGuard from './components/auth/guards/auth.guard';
 import RegistrationComponent from './components/registration/registration.component';
+import AdminPageComponent from './components/admin-page/admin-page.component';
 
 const routes: Routes = [
   { path: '', component: SearchComponent, canActivate: [AuthGuard] },
@@ -14,6 +15,7 @@ const routes: Routes = [
     component: DetailsPageComponent,
     canActivate: [AuthGuard],
   },
+  { path: 'admin', component: AdminPageComponent, canActivate: [AuthGuard] },
   { path: 'authorization', component: AuthComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: '**', component: PageNotFoundComponent },

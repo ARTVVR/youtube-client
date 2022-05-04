@@ -22,6 +22,7 @@ import AuthComponent from './components/auth/auth.component';
 import DataService from './services/data.service';
 import ResponseInterceptor from './interceptors/response.interceptor';
 import RegistrationComponent from './components/registration/registration.component';
+import AdminPageComponent from './components/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import RegistrationComponent from './components/registration/registration.compon
     PageNotFoundComponent,
     AuthComponent,
     RegistrationComponent,
+    AdminPageComponent,
   ],
   imports: [
     BrowserModule,
