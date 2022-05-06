@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { userOptions } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -7,22 +8,30 @@ import { Router } from '@angular/router';
 export default class AuthService {
   public isToken: boolean = false;
 
-  constructor(private router: Router) {}
+  public userName: string | null = '';
+
+  private currentUrl: Location = window.location;
+
+  constructor(private router: Router) {
+    this.userName = localStorage.getItem(userOptions.userName)
+      ? localStorage.getItem(userOptions.userName)
+      : 'Your name';
+  }
 
   public isLoggedIn(): boolean {
-    this.isToken = !!localStorage.getItem('token');
+    this.isToken = !!localStorage.getItem(userOptions.token);
     return this.isToken;
   }
 
   public logIn(): void {
-    if (!this.isToken) {
-      localStorage.setItem('token', '0123456789');
-    }
+    localStorage.setItem(userOptions.token, userOptions.fakeToken);
+    localStorage.setItem(userOptions.userName, `${this.userName}`);
+    this.router.navigate(['/']);
   }
 
   public logOut(): void {
-    const currentRoute = this.router.url === '/' ? 'authorization' : '/';
     localStorage.removeItem('token');
-    this.router.navigate([currentRoute]);
+    localStorage.removeItem('userName');
+    this.currentUrl.reload();
   }
 }

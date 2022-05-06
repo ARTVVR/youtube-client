@@ -5,6 +5,7 @@ import reverseValue from 'src/app/utils/utils';
 import { Router } from '@angular/router';
 import { IItem, RootObject } from 'src/app/interfaces/search-item.model';
 import { MAX_VIDEOS, MINIMAL_SEARCH_LENGTH } from 'src/app/constants/constants';
+import AuthService from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-filter-search',
@@ -22,7 +23,11 @@ export default class FilterSearchComponent {
 
   public searchValue: string = '';
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    public authService: AuthService
+  ) {}
 
   public set filterByValue(value: string) {
     this.dataService.inputValue = value;

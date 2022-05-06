@@ -1,0 +1,104 @@
+<form
+  #form="ngForm"
+  class="form-registration"
+  (ngSubmit)="onSubmit(form)"
+  [formGroup]="cardsFormGroup"
+>
+  <mat-grid-list cols="1" rowHeight="520px">
+    <mat-grid-tile>
+      <div class="forms-block">
+        <div class="title">Create new card</div>
+
+        <mat-form-field appearance="fill" class="name-form-field">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" />
+          <mat-error *ngIf="!cardsFormGroup.controls['title'].value">
+            Please enter title
+          </mat-error>
+          <mat-error
+            *ngIf="cardsFormGroup.controls['title'].hasError('minlength')"
+          >
+            at least 3 characters
+          </mat-error>
+          <mat-error
+            *ngIf="cardsFormGroup.controls['title'].hasError('maxlength')"
+          >
+            maximum title length 20 characters
+          </mat-error>
+          <mat-hint *ngIf="cardsFormGroup.controls['title'].valid">
+            Title successfully validated!
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="name-form-field">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description" />
+          <mat-error
+            *ngIf="cardsFormGroup.controls['description'].hasError('maxlength')"
+          >
+            escription must not exceed 255 characters
+          </mat-error>
+          <mat-hint *ngIf="!cardsFormGroup.controls['description'].value">
+            Optional field
+          </mat-hint>
+          <mat-hint
+            *ngIf="
+              cardsFormGroup.controls['description'].valid &&
+              cardsFormGroup.controls['description'].value
+            "
+          >
+            Description successfully validated!
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="data-form-field">
+          <mat-label>Img</mat-label>
+          <input matInput formControlName="imgUrl" />
+          <mat-error class="error">
+            {{
+              cardsFormGroup.controls['imgUrl'].value
+                ? 'Please enter a valid image URL address'
+                : 'Please enter image URL address'
+            }}
+          </mat-error>
+          <mat-hint *ngIf="cardsFormGroup.controls['imgUrl'].valid">
+            Image URL successfully validated!
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="data-form-field">
+          <mat-label>Link video</mat-label>
+          <input matInput formControlName="videoUrl" />
+          <mat-hint *ngIf="cardsFormGroup.controls['videoUrl'].valid">
+            Video URL successfully validated!
+          </mat-hint>
+
+          <mat-error class="error">
+            {{
+              cardsFormGroup.controls['videoUrl'].value
+                ? 'Please enter video URL adress'
+                : 'Please enter a valid video URL address'
+            }}
+          </mat-error>
+        </mat-form-field>
+
+        <div class="message-block">
+          <p class="success-message" *ngIf="isSubmit">
+            Card added successfully
+          </p>
+        </div>
+
+        <div class="btns-block">
+          <button
+            type="submit"
+            class="submit-btn"
+            mat-raised-button
+            color="primary"
+          >
+            Create card
+          </button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

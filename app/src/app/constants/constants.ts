@@ -11,6 +11,12 @@ export const MAX_VIDEOS = 12;
 
 export const MINIMAL_SEARCH_LENGTH = 3;
 
+export const MINIMAL_PASSWORD_LENGTH = 8;
+export const MINIMAL_NAME_LENGTH = 3;
+export const MINIMAL_TITLE_LENGTH = 3;
+export const MAX_TITLE_LENGTH = 20;
+export const MAX_DESCRIPTION_LENGTH = 255;
+
 export const GREEN_COLOR = '#008000';
 export const BLUE_COLOR = '#00BFFF';
 export const RED_COLOR = '#B22222';
@@ -24,3 +30,9 @@ export const YOUTUBE_SEARCH_URL =
 export const YOUTUBE_VIDEO_URL = 'https://www.googleapis.com/youtube/v3/videos';
 
 export const API_KEY = 'AIzaSyDvAazJfYqWB4Wboi0LVmJUbV-F7U-V6Xo';
+
+export const userOptions = {
+  token: 'token',
+  userName: 'userName',
+  fakeToken: '0123456789',
+};

@@ -6,27 +6,38 @@ $light-blue-color: #2f80ed;
   justify-content: flex-end;
 
   .authorization-container {
+    width: 300px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-    .authorization-name {
-      margin-right: 10px;
+    .admin-icon {
+      margin-left: 4px;
     }
 
-    .mat-button {
-      background-color: $light-blue-color;
-      color: #FFFFFF;
-      min-width: 34px;
-      line-height: 0;
-      padding: 0;
-    }
+    .user-block {
+      display: flex;
+      align-items: center;
 
-    .mat-flat-button {
-      background-color: transparent;
-      line-height: 0;
-      padding: 0;
-      min-width: 34px;
-      color: $light-blue-color;
+      .authorization-name {
+        margin-right: 10px;
+      }
+
+      .mat-button {
+        background-color: $light-blue-color;
+        color: #FFFFFF;
+        min-width: 34px;
+        line-height: 0;
+        padding: 0;
+      }
+
+      .mat-flat-button {
+        background-color: transparent;
+        line-height: 0;
+        padding: 0;
+        min-width: 34px;
+        color: $light-blue-color;
+      }
     }
   }
 }

@@ -1,16 +1,46 @@
-<form
-  class="form-authorization"
-  [formGroup]="formGroup"
-  (ngSubmit)="onSubmit()"
->
-  <div class="title">Login</div>
-
-  <mat-grid-list cols="1" rowHeight="300">
+<form class="form-registration" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+  <mat-grid-list cols="1" rowHeight="520px">
     <mat-grid-tile>
       <div class="forms-block">
-        <mat-form-field appearance="fill" class="form-field">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" />
+        <div class="title">Registration</div>
+
+        <mat-form-field appearance="fill" class="name-form-field">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" />
+          <mat-error *ngIf="!formGroup.controls['name'].value">
+            Please enter your name
+          </mat-error>
+          <mat-error *ngIf="formGroup.controls['name'].hasError('minlength')">
+            at least 3 characters
+          </mat-error>
+          <mat-hint *ngIf="formGroup.controls['name'].valid">
+            Name successfully validated!
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="name-form-field">
+          <mat-label>Surname</mat-label>
+          <input matInput formControlName="surname" />
+          <mat-error *ngIf="!formGroup.controls['surname'].value">
+            Please enter your surname
+          </mat-error>
+          <mat-error
+            *ngIf="formGroup.controls['surname'].hasError('minlength')"
+          >
+            at least 3 characters
+          </mat-error>
+          <mat-hint *ngIf="formGroup.controls['surname'].valid">
+            Surname successfully validated!
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="data-form-field">
+          <mat-label>Email address</mat-label>
+          <input
+            matInput
+            placeholder="Ex. pat@example.com"
+            formControlName="email"
+          />
           <mat-error class="error">
             {{
               formGroup.controls['email'].value
@@ -23,13 +53,12 @@
           </mat-hint>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="form-field">
+        <mat-form-field appearance="fill" class="data-form-field">
           <mat-label>Enter password</mat-label>
           <input
             matInput
-            class="input"
-            [type]="isVisible ? 'password' : 'text'"
             formControlName="password"
+            [type]="isVisible ? 'password' : 'text'"
           />
           <mat-hint *ngIf="formGroup.controls['password'].valid">
             Password successfully validated!
@@ -78,7 +107,6 @@
           >
             at least 1 special character (like @#%^)
           </mat-error>
-
           <button
             mat-icon-button
             matSuffix
@@ -92,20 +120,26 @@
             </mat-icon>
           </button>
         </mat-form-field>
+
+        <div class="btns-block">
+          <button
+            class="login-btn"
+            type="button"
+            routerLink="/authorization"
+            mat-stroked-button
+          >
+            Login
+          </button>
+          <button
+            type="submit"
+            class="registration-btn"
+            mat-raised-button
+            color="primary"
+          >
+            Registration
+          </button>
+        </div>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-  <div class="btns-block">
-    <button
-      type="button"
-      class="registration-btn"
-      routerLink="/registration"
-      mat-stroked-button
-    >
-      Registration
-    </button>
-    <button mat-raised-button type="submit" class="login-btn" color="primary">
-      Login
-    </button>
-  </div>
 </form>

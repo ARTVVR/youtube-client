@@ -7,12 +7,17 @@
         matInput
         type="search"
         (input)="getSearchedVideos()"
+        [disabled]="!authService.isLoggedIn()"
         [(ngModel)]="searchValue"
         name="search"
       />
     </mat-form-field>
   </form>
-  <button class="settings-btn" (click)="isVisible = !isVisible">
+  <button
+    class="settings-btn"
+    matTooltip="filters"
+    (click)="isVisible = !isVisible"
+  >
     <mat-icon>tune</mat-icon>
   </button>
 </div>

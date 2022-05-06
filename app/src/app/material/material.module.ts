@@ -13,6 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const MaterialComponents = [
   MatIconModule,
@@ -29,6 +30,7 @@ const MaterialComponents = [
   BrowserAnimationsModule,
   FormsModule,
   CommonModule,
+  MatTooltipModule,
 ];
 
 @NgModule({
